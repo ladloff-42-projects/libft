@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 22:22:44 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/25 21:33:56 by ladloff          ###   ########.fr       */
+/*   Created: 2022/10/27 11:55:49 by ladloff           #+#    #+#             */
+/*   Updated: 2022/10/27 13:43:40 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	unsigned char	*p_s;
-	unsigned char	*is_find;
+	t_list	*new_lst;
 
-	p_s = (unsigned char *)s;
-	is_find = NULL;
-	while (s != NULL && n--)
-		if (*p_s != (unsigned char)c)
-			p_s++;
-	else
+	if (!lst)
+		return (NULL);
+	while (lst != NULL)
 	{
-		is_find = p_s;
-		break ;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (is_find);
+	new_lst = malloc(sizeof(t_list));
+	if (!new_lst)
+		return (NULL);
+	new_lst = lst;
+	ft_lstclear(&new_lst, del);
+	return (new_lst);
 }

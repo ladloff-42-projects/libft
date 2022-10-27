@@ -1,6 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/27 09:35:17 by ladloff           #+#    #+#              #
+#    Updated: 2022/10/27 11:56:41 by ladloff          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+SRCS = ft_isalpha.c\
+		ft_isdigit.c\
+		ft_isalnum.c\
+		ft_isascii.c\
+		ft_isprint.c\
 		ft_strlen.c\
 		ft_memset.c\
 		ft_bzero.c\
@@ -18,26 +34,58 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_strnstr.c\
 		ft_atoi.c\
 		ft_calloc.c\
-		ft_strdup.c
+		ft_strdup.c\
+		ft_substr.c\
+		ft_strjoin.c\
+		ft_strtrim.c\
+		ft_split.c\
+		ft_itoa.c\
+		ft_strmapi.c\
+		ft_striteri.c\
+		ft_putchar_fd.c\
+		ft_putstr_fd.c\
+		ft_putendl_fd.c\
+		ft_putnbr_fd.c
 
-OBJS = ${SRC:.c=.o}
+SRCS_BONUS = ft_lstnew.c\
+			ft_lstadd_front.c\
+			ft_lstsize.c\
+			ft_lstlast.c\
+			ft_lstadd_back.c\
+			ft_lstdelone.c\
+			ft_lstclear.c\
+			ft_lstiter.c\
+			ft_lstmap.c
 
-INCLUDE = includes/
+OBJS = ${SRCS:.c=.o}
+
+OBJS_BONUS = ${SRCS_BONUS:.c=.o}
+
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -rf
 
 .c.o :
-	gcc -Wall -Wextra -Werror -I ${INCLUDE} -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+$(NAME): ${OBJS}
+	ar -rc ${NAME} ${OBJS}
 
 all: ${NAME}
 
-$(NAME): ${OBJS}
-	ar -rcs ${NAME} ${OBJS}
-
 clean:
-	rm -f ${OBJS}
+	${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean: clean
-	rm -f ${NAME}
+		${RM} ${NAME}
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: ${OBJS} ${OBJS_BONUS}
+	ar -rc ${NAME} ${OBJS} ${OBJS_BONUS}
+
+rebonus: fclean bonus
+
+.PHONY: all clean fclean re bonus rebonus

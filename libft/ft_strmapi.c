@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 22:22:44 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/25 21:33:56 by ladloff          ###   ########.fr       */
+/*   Created: 2022/10/25 20:30:48 by ladloff           #+#    #+#             */
+/*   Updated: 2022/10/27 14:03:40 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned char	*p_s;
-	unsigned char	*is_find;
+	size_t	i;
+	size_t	len;
+	char	*str;
+	char	*p_s;
 
-	p_s = (unsigned char *)s;
-	is_find = NULL;
-	while (s != NULL && n--)
-		if (*p_s != (unsigned char)c)
-			p_s++;
-	else
-	{
-		is_find = p_s;
-		break ;
-	}
-	return (is_find);
+	if (!s)
+		return (NULL);
+	i = -1;
+	p_s = (char *)s;
+	len = ft_strlen(s);
+	str = malloc(len * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s[++i])
+		str[i] = f(i, p_s[i]);
+	return (str);
 }

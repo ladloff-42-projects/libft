@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 19:29:36 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/20 19:36:35 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:15:52 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *p_s;
+	unsigned char	*p_s;
 
 	p_s = s;
-	while(n-- > 0)
+	while (n-- > 0)
 		*p_s++ = 0;
 }

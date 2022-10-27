@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:07:37 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/22 22:01:14 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/27 09:28:44 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,31 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t		i;
-	size_t	needle_len;
+	size_t	i;
 
 	i = -1;
-	needle_len = ft_strlen(needle);
-	if (!*needle)
+	if (!haystack || haystack == needle)
 		return ((char *)haystack);
-	if (len > 2147483647 || len == 0)
+	if (len == 0)
 		return (NULL);
-	while (++i <= (len - needle_len))
+	while (*haystack && ++i < len)
 	{
-		if ((haystack[0] == needle[0]) &&
-				(!memcmp(haystack, needle, needle_len)))
-			return ((char *)haystack);
+		if (!(i + ft_strlen(needle) > len))
+			if (haystack[0] == needle[0]
+				&& !ft_strncmp(haystack, needle, ft_strlen(needle)))
+				return ((char *)haystack);
 		haystack++;
 	}
 	return (NULL);
 }
-
-/*int	main(void)
+/*
+int	main(void)
 {
-	char *empty = (char*)"";
+	char haystack[30] = "aaabcabcd";
+	//char needle[10] = "aabc";
 
-	printf("debug1: %s\n", ft_strnstr(empty, "Hello", -1));
-	printf("debug2: %s\n", strnstr(empty, "Hello", -1));
-}*/
-
+	printf("ft_strnstr: [%s]\n", ft_strnstr(haystack, "cd", 8));
+	printf("strnstr: [%s]\n", strnstr(haystack, "cd", 8));
+	//printf("haystack + 5: [%s]\n", haystack + 5);
+}
+*/

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 22:22:44 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/25 21:33:56 by ladloff          ###   ########.fr       */
+/*   Created: 2022/10/27 11:50:12 by ladloff           #+#    #+#             */
+/*   Updated: 2022/10/27 13:49:48 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	unsigned char	*p_s;
-	unsigned char	*is_find;
-
-	p_s = (unsigned char *)s;
-	is_find = NULL;
-	while (s != NULL && n--)
-		if (*p_s != (unsigned char)c)
-			p_s++;
-	else
+	if (!lst || !f)
+		return ;
+	while (lst != NULL)
 	{
-		is_find = p_s;
-		break ;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (is_find);
 }

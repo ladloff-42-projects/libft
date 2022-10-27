@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:42:54 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/20 20:04:02 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:33:00 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	p_src = src;
 	p_dst = dst;
-	if(!dst && !src)
+	if (!dst && !src)
 		return (NULL);
 	while (n--)
 		*p_dst++ = *p_src++;

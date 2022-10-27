@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 19:21:32 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/20 19:29:02 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/25 21:32:16 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char *p_b;
+	unsigned char	*p_b;
 
 	p_b = b;
 	while (len--)

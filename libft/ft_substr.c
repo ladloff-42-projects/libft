@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 22:22:44 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/25 21:33:56 by ladloff          ###   ########.fr       */
+/*   Created: 2022/10/25 11:02:49 by ladloff           #+#    #+#             */
+/*   Updated: 2022/10/27 14:05:54 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char	*p_s;
-	unsigned char	*is_find;
+	size_t	i;
+	char	*str;
 
-	p_s = (unsigned char *)s;
-	is_find = NULL;
-	while (s != NULL && n--)
-		if (*p_s != (unsigned char)c)
-			p_s++;
-	else
-	{
-		is_find = p_s;
-		break ;
-	}
-	return (is_find);
+	if (!s)
+		return (NULL);
+	i = -1;
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (start + len > ft_strlen(s))
+		len = ft_strlen(s);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s[++i] && i < len)
+		str[i] = s[start + i];
+	str[i] = '\0';
+	return (str);
 }
