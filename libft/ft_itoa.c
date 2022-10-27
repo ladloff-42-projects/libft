@@ -6,26 +6,21 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 20:21:04 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 13:39:47 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/27 18:11:08 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_nb_len(long nb)
+static size_t	ft_get_len(int n)
 {
 	size_t	len;
 
-	len = 0;
-	if (nb < 0)
+	len = (n <= 0);
+	while (n)
 	{
-		nb = -nb;
-		len++;
-	}
-	while (nb > 0)
-	{
-		nb /= 10;
+		n /= 10;
 		len++;
 	}
 	return (len);
@@ -60,8 +55,8 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	nb = n;
-	i = ft_nb_len(n);
-	str = malloc((i + 2) * sizeof(char));
+	i = ft_get_len(n);
+	str = malloc((i + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	str = ft_int_to_char(str, nb, i);
