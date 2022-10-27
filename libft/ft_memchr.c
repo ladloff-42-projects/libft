@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 22:22:44 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/25 21:33:56 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/27 22:55:32 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*p_s;
-	unsigned char	*is_find;
+	const unsigned char	*p_s;
 
-	p_s = (unsigned char *)s;
-	is_find = NULL;
-	while (s != NULL && n--)
-		if (*p_s != (unsigned char)c)
-			p_s++;
-	else
+	if (n != 0)
 	{
-		is_find = p_s;
-		break ;
+		p_s = s;
+		while (n--)
+			if (*p_s++ == (unsigned char)c)
+				return ((void *)(p_s - 1));
 	}
-	return (is_find);
+	return (NULL);
 }
