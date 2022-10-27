@@ -6,51 +6,43 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:26:41 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/26 15:07:07 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/27 20:23:29 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int	ft_check_in_set(char c, const char *set)
+static int	ft_is_in_set(const char *set, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
 	while (set[++i])
-		if (c == set[i])
+		if (set[i] == c)
 			return (1);
 	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	start_pos;
-	size_t	end_pos;
+	size_t	end;
+	size_t	start;
 	size_t	total_len;
-	char	*trimmed_str;
+	char	*str_trim;
 
 	if (!s1 || !set)
 		return (NULL);
-	start_pos = -1;
-	end_pos = ft_strlen(s1);
-	while (s1[++start_pos] && ft_check_in_set(s1[start_pos], set))
+	start = -1;
+	while (s1[++start] && ft_is_in_set(set, s1[start]))
 		;
-	while (start_pos < --end_pos && ft_check_in_set(s1[end_pos], set))
+	end = ft_strlen(s1);
+	while (start < --end && ft_is_in_set(set, s1[end]))
 		;
-	total_len = (end_pos - start_pos + 1);
-	trimmed_str = malloc(total_len * sizeof(char));
-	if (!trimmed_str)
+	str_trim = malloc((end - start + 2) * sizeof(char));
+	if (!str_trim)
 		return (NULL);
-	memmove(trimmed_str, s1 + start_pos, total_len);
-	trimmed_str[total_len] = '\0';
-	return (trimmed_str);
+	total_len = (end - start + 1);
+	memmove(str_trim, s1 + start, total_len);
+	str_trim[total_len] = '\0';
+	return (str_trim);
 }
-/*
-int	main(void)
-{
-	printf("ft_strtrim: [%s]\n", ft_strtrim("   xxxtripouille", " x"));
-	return (0);
-}
-*/
