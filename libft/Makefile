@@ -6,7 +6,7 @@
 #    By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 09:35:17 by ladloff           #+#    #+#              #
-#    Updated: 2022/10/27 11:56:41 by ladloff          ###   ########.fr        #
+#    Updated: 2022/10/27 15:03:34 by ladloff          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ OBJS = ${SRCS:.c=.o}
 
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
