@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:55:49 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 13:43:40 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/28 15:16:49 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
+	t_list	*first_new_lst;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
-	while (lst != NULL)
+	new_lst = ft_lstnew(f(lst->content));
+	first_new_lst = new_lst;
+	lst = lst->next;
+	while (lst)
 	{
-		f(lst->content);
+		new_lst->next = ft_lstnew(f(lst->content));
+		new_lst = new_lst->next;
 		lst = lst->next;
 	}
-	new_lst = malloc(sizeof(t_list));
-	if (!new_lst)
-		return (NULL);
-	new_lst = lst;
-	ft_lstclear(&new_lst, del);
-	return (new_lst);
+	ft_lstclear(&lst, del);
+	return (first_new_lst);
 }
