@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 20:21:04 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/29 12:27:32 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:20:24 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	ft_get_len(int n)
 	return (len);
 }
 
-char	*ft_int_to_char(char *str, long nb, size_t i)
+static char	*ft_int_to_char(char *str, long nb, size_t i)
 {
 	str[i--] = '\0';
 	if (nb == 0)

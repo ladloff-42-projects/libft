@@ -6,20 +6,20 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:46:01 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/29 12:53:36 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:21:12 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_check_separator(char c, char charset)
+static size_t	ft_check_separator(char c, char charset)
 {
 	if (c == charset)
 		return (1);
 	return (0);
 }
 
-size_t	ft_count_strings(const char *s, char c)
+static size_t	ft_count_strings(const char *s, char c)
 {
 	size_t	i;
 
@@ -36,7 +36,7 @@ size_t	ft_count_strings(const char *s, char c)
 	return (i);
 }
 
-size_t	ft_strlen_sep(const char *s, char c)
+static size_t	ft_strlen_sep(const char *s, char c)
 {
 	size_t	i;
 
@@ -46,7 +46,7 @@ size_t	ft_strlen_sep(const char *s, char c)
 	return (i);
 }
 
-char	*ft_word(const char *s, char c)
+static char	*ft_word(const char *s, char c)
 {
 	size_t	i;
 	size_t	len_word;
