@@ -6,12 +6,11 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 20:21:04 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 18:11:08 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:27:32 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	ft_get_len(int n)
 {
@@ -41,9 +40,8 @@ char	*ft_int_to_char(char *str, long nb, size_t i)
 	}
 	while (nb > 0)
 	{
-		str[i] = 48 + (nb % 10);
+		str[i--] = 48 + (nb % 10);
 		nb /= 10;
-		i--;
 	}
 	return (str);
 }

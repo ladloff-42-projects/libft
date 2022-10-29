@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 20:40:39 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 13:50:30 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:37:15 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
+	unsigned int	i;
 
 	if (!s || !f)
 		return ;

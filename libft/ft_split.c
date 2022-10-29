@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:46:01 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 14:05:13 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:53:36 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ char	*ft_word(const char *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
-	char	**strings;
+	char	**str;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	strings = malloc(sizeof(char *) * (ft_count_strings(s, c) + 1));
-	if (!strings)
+	str = malloc(sizeof(char *) * (ft_count_strings(s, c) + 1));
+	if (!str)
 		return (NULL);
 	while (*s)
 	{
@@ -82,28 +82,12 @@ char	**ft_split(char const *s, char c)
 		}
 		if (*s)
 		{
-			strings[i] = ft_word(s, c);
+			str[i] = ft_word(s, c);
 			i++;
 		}
 		while (*s && !ft_check_separator(*s, c))
 			s++;
 	}
-	strings[i] = 0;
-	return (strings);
+	str[i] = 0;
+	return (str);
 }
-
-/*
-int	main(void)
-{
-	size_t	i = 0;
-	char	**split;
-
-	split = ft_split("  tripouille 42  ", ' ');
-	while (split[i])
-	{
-		printf("%s\n", split[i]);
-		i++;
-	}
-	return (0);
-}
-*/

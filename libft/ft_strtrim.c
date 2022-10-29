@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:26:41 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 20:23:29 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:50:55 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ static int	ft_is_in_set(const char *set, char c)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	end;
-	size_t	start;
-	size_t	total_len;
-	char	*str_trim;
+	size_t	i;
+	size_t	j;
+	size_t	len_total;
+	char	*str;
 
 	if (!s1 || !set)
 		return (NULL);
-	start = -1;
-	while (s1[++start] && ft_is_in_set(set, s1[start]))
+	i = -1;
+	while (s1[++i] && ft_is_in_set(set, s1[i]))
 		;
-	end = ft_strlen(s1);
-	while (start < --end && ft_is_in_set(set, s1[end]))
+	j = ft_strlen(s1);
+	while (i < --j && ft_is_in_set(set, s1[j]))
 		;
-	str_trim = malloc((end - start + 2) * sizeof(char));
-	if (!str_trim)
+	str = malloc((j - i + 2) * sizeof(char));
+	if (!str)
 		return (NULL);
-	total_len = (end - start + 1);
-	memmove(str_trim, s1 + start, total_len);
-	str_trim[total_len] = '\0';
-	return (str_trim);
+	len_total = (j - i + 1);
+	memmove(str, s1 + i, len_total);
+	str[len_total] = '\0';
+	return (str);
 }
