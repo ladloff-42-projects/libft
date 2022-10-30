@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:46:01 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/29 19:21:12 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/30 16:12:23 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ static char	*ft_word(const char *s, char c)
 	return (word);
 }
 
+char	**ft_free(char **str)
+{
+	while (*str)
+		free(*str++);
+	free(str);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -77,17 +85,16 @@ char	**ft_split(char const *s, char c)
 	while (*s)
 	{
 		while (*s && ft_check_separator(*s, c))
-		{
 			s++;
-		}
 		if (*s)
 		{
 			str[i] = ft_word(s, c);
-			i++;
+			if (!str[i++])
+				return (ft_free(str));
 		}
 		while (*s && !ft_check_separator(*s, c))
 			s++;
 	}
-	str[i] = 0;
+	str[i] = NULL;
 	return (str);
 }
