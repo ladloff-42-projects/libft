@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 20:50:26 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/27 13:54:15 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/30 16:13:06 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s)
 		return ;
-	while (*s)
-		write(fd, s++, sizeof(char));
+	write(fd, s, ft_strlen(s));
 }
