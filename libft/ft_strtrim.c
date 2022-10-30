@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:26:41 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/29 12:50:55 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/30 15:42:43 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!str)
 		return (NULL);
 	len_total = (j - i + 1);
-	memmove(str, s1 + i, len_total);
+	ft_memmove(str, s1 + i, len_total);
 	str[len_total] = '\0';
 	return (str);
 }
