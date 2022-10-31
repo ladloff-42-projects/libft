@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:46:01 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/30 16:12:23 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/10/31 14:05:48 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,19 @@ static size_t	ft_count_strings(const char *s, char c)
 	return (i);
 }
 
-static size_t	ft_strlen_sep(const char *s, char c)
-{
-	size_t	i;
-
-	i = -1;
-	while (s[++i] && !ft_check_separator(s[i], c))
-		;
-	return (i);
-}
-
 static char	*ft_word(const char *s, char c)
 {
 	size_t	i;
 	size_t	len_word;
 	char	*word;
 
-	i = -1;
-	len_word = ft_strlen_sep(s, c);
+	len_word = -1;
+	while (s[++len_word] && !ft_check_separator(s[len_word], c))
+		;
 	word = malloc((len_word + 1) * sizeof(char));
 	if (!word)
 		return (NULL);
+	i = -1;
 	while (++i < len_word)
 		word[i] = s[i];
 	word[i] = '\0';
