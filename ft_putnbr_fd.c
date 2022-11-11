@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 21:06:46 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/25 21:31:57 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/11/10 15:41:46 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int	nb;
+	long	nb;
 
 	nb = n;
 	if (nb < 0)
