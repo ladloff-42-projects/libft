@@ -6,7 +6,7 @@
 /*   By: ladloff <ladloff@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:46:01 by ladloff           #+#    #+#             */
-/*   Updated: 2022/10/31 14:05:48 by ladloff          ###   ########.fr       */
+/*   Updated: 2022/11/10 15:46:01 by ladloff          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	*ft_word(const char *s, char c)
 	return (word);
 }
 
-char	**ft_free(char **str)
+static char	**ft_free(char **str)
 {
 	while (*str)
 		free(*str++);
